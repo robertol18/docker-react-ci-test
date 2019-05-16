@@ -1,0 +1,9 @@
+sudo: required 
+  services:
+    - docker
+
+before_install:
+  - docker build -t robertol18/docker-react-ci-test -f Dockerfile.dev .
+
+script:
+  - docker run robertol18/docker-react-ci-test npm run test -- --coverage
